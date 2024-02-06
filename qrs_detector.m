@@ -24,10 +24,11 @@ for i = 1:length(test.ECG)
 end
 %% QRS and RR intervals
 % QRS
-QRS_train = train.QRS;
+for i = 1:length(ECG_filt_train)
+    QRS_train{i} = qrsDetector(ECG_filt_train{i});
+end
 
 for i = 1:length(ECG_filt_test)
-    disp(i);
     QRS_test{i} = qrsDetector(ECG_filt_test{i});
 end
 
@@ -39,6 +40,7 @@ for i=1:length(ECG_filt_train) % training set
 end
 
 for i=1:length(ECG_filt_test) % testing set
+   disp(i);
    RR_test{i}=diff(QRS_test{i})/100; %RR interval in seconds
    QRS_test{i}(end)=[]; %Make sure two sequences are the same length
    RR_test{i}(RR_test{i}<0.25 | RR_test{i}>2)=nan; %Remove physiologically unreasonable values i.e outside range 0.33s to 3s
@@ -46,10 +48,10 @@ end
 
 %% plot the result
 % get time
-for i = 1:50
-    t_train{i} = (1:length(ECG_filt_train{i}))/fs_sec; % 100hz in second
-    t_test{i} = (1:length(ECG_filt_test{i}))/fs_sec; % 100hz in second
-end
+% for i = 1:50
+%     t_train{i} = (1:length(ECG_filt_train{i}))/fs_sec; % 100hz in second
+%     t_test{i} = (1:length(ECG_filt_test{i}))/fs_sec; % 100hz in second
+% end
 
 % figure
 % plot(t_train{1},ECG_filt_train{1});
@@ -77,7 +79,7 @@ bit = 0.005; % 1 bit = 5 uV
 ecg_raw = ECG*bit;
 % butterworth low pass filter - remove EMG and powerline interference
 fc = 20; % cut off frequency
-[b,a] = butter(10,fc/(fs/2),"low"); % butterworth low pass filter
+[b,a] = butter(2,fc/(fs/2),"low"); % butterworth low pass filter
 ecg_low = filtfilt(b,a,ecg_raw); % zero-phase digital filtering to deal with dealaying
 
 % median filter - remove baseline interference
@@ -97,14 +99,12 @@ r_nmax = max(-ecg_temp); % find negative mean
 % check if ECG is inverted or not
 if r_pmax > r_nmax % normal 
     peak_thres = r_pmax*0.90; % peak height threshold is 90% of the maximum
+    [~,locs] = findpeaks(ECG,'MinPeakHeight',peak_thres);
 else % inverted
     peak_thres = r_nmax*0.90; % peak height threshold is 90% of the maximum
+    [~,locs] = findpeaks(-ECG,'MinPeakHeight',peak_thres);
 end
 
-[~,locs_p] = findpeaks(ECG,'MinPeakHeight',peak_thres);
-[~,locs_n] = findpeaks(-ECG,'MinPeakHeight',peak_thres);
-
-locs = [locs_p, locs_n];
 sort(locs);
 QRS = locs;
 end
