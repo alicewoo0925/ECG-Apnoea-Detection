@@ -26,9 +26,9 @@ However, further improvements are needed, particularly in enhancing sensitivity 
 ## Meet our Team
 The success of this project is attributed to the remarkable commitment and steadfast efforts of our team members:
 
-* [Alice Yoonjung Woo](https://www.linkedin.com/in/alice-yoonjung-woo/)
-* [Nicholas Van Tilbug](https://www.linkedin.com/in/nicholas-van-tilburg-1765591aa/)
-* Jasmine Huang
+- **[Alice Yoonjung Woo](https://www.linkedin.com/in/alice-yoonjung-woo/)**
+- **[Nicholas Van Tilbug](https://www.linkedin.com/in/nicholas-van-tilburg-1765591aa/)**
+- **Jasmine Huang**
 
 Special thanks to anyone who provided feedback, reported issues, or helped in any way to make this project better.
 
