@@ -23,6 +23,15 @@ While the high specificity suggests a low rate of false positives, the low sensi
 
 However, further improvements are needed, particularly in enhancing sensitivity to ensure a more comprehensive detection of positive cases. By enhancing QRS detection algorithms and fine-tuning more advanced machine learning models, we are optimistic about the eventual development of reliable sleep apnea detection software for users of wearable heart rate monitors.
 
+## Meet our Team
+The success of this project is attributed to the remarkable commitment and steadfast efforts of our team members:
+
+* [Alice Yoonjung Woo](https://www.linkedin.com/in/alice-yoonjung-woo/)
+* [Nicholas Van Tilbug](https://www.linkedin.com/in/nicholas-van-tilburg-1765591aa/)
+* Jasmine Huang
+
+Special thanks to anyone who provided feedback, reported issues, or helped in any way to make this project better.
+
 
 
 
