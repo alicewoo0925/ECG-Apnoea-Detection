@@ -16,6 +16,7 @@ The dataset used in this project consists of 50 overnight ECG recordings with 1-
 
 
 ## Prediction Result
+![image](https://github.com/alicewoo0925/ECG-Apnoea-Detection/assets/48823257/f12fce3e-431b-48ea-bf2a-309367f1ac54)
 With a sensitivity of 9.24%, specificity of 97.03%, and an accuracy of 80.63%, our best model demonstrates strong capability in correctly identifying true negatives but has limited effectiveness in detecting true positives.
 
 While the high specificity suggests a low rate of false positives, the low sensitivity indicates a significant number of false negatives. Despite these limitations, the overall accuracy of 80.63% suggests that the model performs reasonably well in distinguishing between positive and negative instances.
